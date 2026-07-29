@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>Daily Challenges: Day 1 - JavaScript + JSON</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Daily Challenges: Day 1 - JavaScript + JSON</h1>
+
+      <p><strong>Estimated time</strong>: 30 minutes</p>
+      <p><strong>Level</strong>: Beginner</p>
+      <p><strong>Objective</strong>: Practise parsing JSON, looping through arrays, filtering values, and calculating a total.</p>
+    </header>
+
+    <main>
+      <hr />
+
+      <div id="order-summary"></div>
+
+      <hr/>
+
+      <h3>JavaScript Solution</h3>
+      <pre>
+        <code>
+          const orderJson = `{
+            "customer": "Sam",
+            "items": [
+              { "name": "Notebook", "price": 4.50, "quantity": 2 },
+              { "name": "Pen", "price": 1.25, "quantity": 3 },
+              { "name": "Backpack", "price": 28.00, "quantity": 1 }
+            ]
+          }`;
+
+          const data = JSON.parse(orderJson);
+          let completeOrderTotal = 0;
+
+
+          /* Output to HTML */
+          const summary = document.getElementById("order-summary");
+          let output = `&lt;h2&gt;Customer: ${data.customer}&lt;/h2&gt;`;
+          output += "&lt;ul&gt;";
+
+          for(let i = 0; i < data.items.length; i++) {
+            const item = data.items[i];
+            const itemTotal = item.price * item.quantity;
+
+            if(itemTotal > 5) {
+              output += `&lt;li&gt;${item.name}: £${itemTotal.toFixed(2)}&lt;/li&gt;`;
+            }
+
+            completeOrderTotal += itemTotal;
+          }
+
+          output += "&lt;/ul&gt;";
+          output += `&lt;p&gt;&lt;strong&gt;Order total: £${completeOrderTotal.toFixed(2)}&lt;/strong&gt;&lt;/p&gt;`;
+
+          summary.innerHTML = output;
+        </code>
+      </pre>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+      const orderJson = `{
+        "customer": "Sam",
+        "items": [
+          { "name": "Notebook", "price": 4.50, "quantity": 2 },
+          { "name": "Pen", "price": 1.25, "quantity": 3 },
+          { "name": "Backpack", "price": 28.00, "quantity": 1 }
+        ]
+      }`;
+
+      const data = JSON.parse(orderJson);
+      let completeOrderTotal = 0;
+
+
+      /* Output to HTML */
+      const summary = document.getElementById("order-summary");
+      let output = `<h2>Customer: ${data.customer}</h2>`;
+      output += "<ul>";
+
+      for(let i = 0; i < data.items.length; i++) {
+        const item = data.items[i];
+        const itemTotal = item.price * item.quantity;
+
+        if(itemTotal > 5) {
+          output += `<li>${item.name}: £${itemTotal.toFixed(2)}</li>`;
+        }
+
+        completeOrderTotal += itemTotal;
+      }
+
+      output += "</ul>";
+      output += `<p><strong>Order total: £${completeOrderTotal.toFixed(2)}</strong></p>`;
+
+      summary.innerHTML = output;
+
+    </script>
+
+  </body>
+</html>
