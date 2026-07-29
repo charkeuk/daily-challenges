@@ -1,5 +1,9 @@
-<html>
+<html lang="en">
   <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Daily Challenges: Day 1 - JavaScript + JSON</title>
   </head>
   <body>
@@ -33,22 +37,29 @@
 
           const data = JSON.parse(orderJson);
           let completeOrderTotal = 0;
+          const expensiveItems = [];
 
+          for(let i = 0; i < data.items.length; i++) {
+            const item = data.items[i];
+            const itemTotal = item.price * item.quantity;
+
+            completeOrderTotal += itemTotal;
+
+            if(itemTotal > 5) {
+              expensiveItems.push({
+                name: item.name,
+                total: itemTotal
+              });
+            }
+          }
 
           /* Output to HTML */
           const summary = document.getElementById("order-summary");
           let output = `&lt;h2&gt;Customer: ${data.customer}&lt;/h2&gt;`;
           output += "&lt;ul&gt;";
 
-          for(let i = 0; i < data.items.length; i++) {
-            const item = data.items[i];
-            const itemTotal = item.price * item.quantity;
-
-            if(itemTotal > 5) {
-              output += `&lt;li&gt;${item.name}: £${itemTotal.toFixed(2)}&lt;/li&gt;`;
-            }
-
-            completeOrderTotal += itemTotal;
+          for (const item of expensiveItems) {
+            output += `&lt;li&gt;${item.name}: £${item.total.toFixed(2)}&lt;/li&gt;`;
           }
 
           output += "&lt;/ul&gt;";
@@ -75,22 +86,29 @@
 
       const data = JSON.parse(orderJson);
       let completeOrderTotal = 0;
+      const expensiveItems = [];
 
+      for(let i = 0; i < data.items.length; i++) {
+        const item = data.items[i];
+        const itemTotal = item.price * item.quantity;
+
+        completeOrderTotal += itemTotal;
+
+        if(itemTotal > 5) {
+          expensiveItems.push({
+            name: item.name,
+            total: itemTotal
+          });
+        }
+      }
 
       /* Output to HTML */
       const summary = document.getElementById("order-summary");
       let output = `<h2>Customer: ${data.customer}</h2>`;
       output += "<ul>";
 
-      for(let i = 0; i < data.items.length; i++) {
-        const item = data.items[i];
-        const itemTotal = item.price * item.quantity;
-
-        if(itemTotal > 5) {
-          output += `<li>${item.name}: £${itemTotal.toFixed(2)}</li>`;
-        }
-
-        completeOrderTotal += itemTotal;
+      for (const item of expensiveItems) {
+        output += `<li>${item.name}: £${item.total.toFixed(2)}</li>`;
       }
 
       output += "</ul>";
