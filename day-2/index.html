@@ -1,0 +1,155 @@
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Challenges: Day 2 - JavaScript Mini Shopping Basket</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Daily Challenges: Day 2 - JavaScript Mini Shopping Basket</h1>
+
+      <p><strong>Estimated time</strong>: 30 minutes</p>
+      <p><strong>Level</strong>: Beginner</p>
+      <p><strong>Objective</strong>: Practise functions, arrays, objects, loops, conditionals, and basic arithmetic.</p>
+    </header>
+
+    <main>
+      <hr />
+      <h2>Items</h2>
+
+      <table cellspacing="5">
+        <thead>
+          <tr>
+            <th width="150" align="left">Item</th>
+            <th width="100" align="left">Price</th>
+            <th width="100" align="left">Quantity</th>
+            <th width="100" align="left">Item total</th>
+          </tr>
+        </thead>
+
+        <tbody id="items"></tbody>
+      </table>
+
+      <h3>Shopping Basket</h3>
+      <ul>
+        <li>Subtotal: £<span id="subtotal"></span></li>
+        <li>Discount: £<span id="discount"></span></li>
+        <li>Total: £<span id="total"></span></li>
+      </ul>
+
+      <hr/>
+
+      <h3>JavaScript Solution</h3>
+      <pre>
+        <code>
+          function calculateBasket(items) {
+            let subtotal = 0;
+            let discount = 0;
+
+            const itemsTable = document.querySelector("#items");
+
+            for (const item of items) {
+              const itemTotal = item.price * item.quantity;
+              const row = itemsTable.insertRow();
+
+              row.insertCell().textContent = item.name;
+              row.insertCell().textContent = `£${item.price.toFixed(2)}`;
+              row.insertCell().textContent = item.quantity;
+              row.insertCell().textContent = `£${itemTotal.toFixed(2)}`;
+
+              subtotal += itemTotal;
+            }
+
+            if(subtotal >= 20) {
+              discount = subtotal * 0.10;
+            } else {
+              discount = 0;
+            }
+
+            const total = subtotal - discount;
+
+            return {
+              subtotal: Number(subtotal.toFixed(2)),
+              discount: Number(discount.toFixed(2)),
+              total: Number(total.toFixed(2))
+            };
+          }
+
+          const items = [
+            { name: "Notebook", price: 4.5, quantity: 2 },
+            { name: "Pen", price: 1.25, quantity: 3 },
+            { name: "Backpack", price: 18, quantity: 1 }
+          ];
+
+          const result = calculateBasket(items);
+
+          /* Output to HTML */
+          document.querySelector("#subtotal").textContent = result.subtotal.toFixed(2);
+
+          document.querySelector("#discount").textContent = result.discount.toFixed(2);
+
+          document.querySelector("#total").textContent = result.total.toFixed(2);
+        </code>
+      </pre>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+      function calculateBasket(items) {
+        let subtotal = 0;
+        let discount = 0;
+
+        const itemsTable = document.querySelector("#items");
+
+        for (const item of items) {
+          const itemTotal = item.price * item.quantity;
+          const row = itemsTable.insertRow();
+
+          row.insertCell().textContent = item.name;
+          row.insertCell().textContent = `£${item.price.toFixed(2)}`;
+          row.insertCell().textContent = item.quantity;
+          row.insertCell().textContent = `£${itemTotal.toFixed(2)}`;
+
+          subtotal += itemTotal;
+        }
+
+        if(subtotal >= 20) {
+          discount = subtotal * 0.10;
+        } else {
+          discount = 0;
+        }
+
+        const total = subtotal - discount;
+
+        return {
+          subtotal: Number(subtotal.toFixed(2)),
+          discount: Number(discount.toFixed(2)),
+          total: Number(total.toFixed(2))
+        };
+      }
+
+      const items = [
+        { name: "Notebook", price: 4.5, quantity: 2 },
+        { name: "Pen", price: 1.25, quantity: 3 },
+        { name: "Backpack", price: 18, quantity: 1 }
+      ];
+
+      const result = calculateBasket(items);
+
+      /* Output to HTML */
+      document.querySelector("#subtotal").textContent = result.subtotal.toFixed(2);
+
+      document.querySelector("#discount").textContent = result.discount.toFixed(2);
+
+      document.querySelector("#total").textContent = result.total.toFixed(2);
+
+    </script>
+
+  </body>
+</html>
