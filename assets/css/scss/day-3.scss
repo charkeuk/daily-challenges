@@ -1,0 +1,19 @@
+.loan-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.status-on-time {
+  color: #137333;
+}
+
+.status-overdue {
+  color: #b3261e;
+}
+
+@media (max-width: 600px) {
+  .loan-summary {
+    grid-template-columns: 1fr;
+  }
+}

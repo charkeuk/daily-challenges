@@ -1,0 +1,42 @@
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  color: #666;
+  font-size: 14px;
+  background: #fafafa;
+}
+
+.basket-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.total-card {
+  border-color: #137333;
+
+  strong {
+    color: #137333;
+  }
+}
+
+@media (max-width: 600px) {
+  .basket-summary {
+    grid-template-columns: 1fr;
+  }
+}

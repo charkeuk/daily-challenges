@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
 
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Daily Challenges: Day 1 - JavaScript + JSON</title>
+    <link rel="stylesheet" href="../assets/css/combined.min.css">
   </head>
   <body>
 
@@ -19,13 +21,16 @@
     <main>
       <hr />
 
-      <div id="order-summary"></div>
+      <section>
+        <h2>Order Summary</h2>
+        <div id="order-summary" class="order-summary"></div>
+      </section>
 
       <hr/>
 
-      <h3>JavaScript Solution</h3>
-      <pre>
-        <code>
+      <section>
+        <h3>JavaScript Solution</h3>
+        <pre><code>
           const orderJson = `{
             "customer": "Sam",
             "items": [
@@ -55,23 +60,23 @@
 
           /* Output to HTML */
           const summary = document.getElementById("order-summary");
-          let output = `&lt;h2&gt;Customer: ${data.customer}&lt;/h2&gt;`;
-          output += "&lt;ul&gt;";
+          let output = `&lt;div class="summary-item"&gt;&lt;span&gt;Customer&lt;/span&gt;&lt;strong&gt;${data.customer}&lt;/strong&gt;&lt;/div&gt;`;
+          output += `&lt;div class="summary-item"&gt;&lt;span&gt;Order Total&lt;/span&gt;&lt;strong&gt;£${completeOrderTotal.toFixed(2)}&lt;/strong&gt;&lt;/div&gt;`;
+          output += '&lt;div class="summary-item summary-item-wide"&gt;&lt;span&gt;Items over £5&lt;/span&gt;&lt;ul&gt;';
 
           for (const item of expensiveItems) {
             output += `&lt;li&gt;${item.name}: £${item.total.toFixed(2)}&lt;/li&gt;`;
           }
 
-          output += "&lt;/ul&gt;";
-          output += `&lt;p&gt;&lt;strong&gt;Order total: £${completeOrderTotal.toFixed(2)}&lt;/strong&gt;&lt;/p&gt;`;
+          output += "&lt;/ul&gt;&lt;/div&gt;";
 
           summary.innerHTML = output;
-        </code>
-      </pre>
+        </code></pre>
+      </section>
     </main>
 
     <footer>
-
+      <p>Coding Challenge - Day 1</p>
     </footer>
 
     <script>
@@ -104,15 +109,15 @@
 
       /* Output to HTML */
       const summary = document.getElementById("order-summary");
-      let output = `<h2>Customer: ${data.customer}</h2>`;
-      output += "<ul>";
+      let output = `<div class="summary-item"><span>Customer</span><strong>${data.customer}</strong></div>`;
+      output += `<div class="summary-item"><span>Order Total</span><strong>£${completeOrderTotal.toFixed(2)}</strong></div>`;
+      output += '<div class="summary-item summary-item-wide"><span>Items over £5</span><ul>';
 
       for (const item of expensiveItems) {
         output += `<li>${item.name}: £${item.total.toFixed(2)}</li>`;
       }
 
-      output += "</ul>";
-      output += `<p><strong>Order total: £${completeOrderTotal.toFixed(2)}</strong></p>`;
+      output += "</ul></div>";
 
       summary.innerHTML = output;
 

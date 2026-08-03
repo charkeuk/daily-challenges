@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
 
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Daily Challenges: Day 2 - JavaScript Mini Shopping Basket</title>
+    <link rel="stylesheet" href="../assets/css/combined.min.css">
   </head>
   <body>
 
@@ -20,7 +22,8 @@
       <hr />
       <h2>Items</h2>
 
-      <table cellspacing="5">
+      <div class="table-wrap">
+      <table>
         <thead>
           <tr>
             <th width="150" align="left">Item</th>
@@ -32,19 +35,19 @@
 
         <tbody id="items"></tbody>
       </table>
+      </div>
 
       <h3>Shopping Basket</h3>
-      <ul>
-        <li>Subtotal: £<span id="subtotal"></span></li>
-        <li>Discount: £<span id="discount"></span></li>
-        <li>Total: £<span id="total"></span></li>
-      </ul>
+      <div class="basket-summary">
+        <div class="summary-item"><span>Subtotal</span><strong>£<span id="subtotal"></span></strong></div>
+        <div class="summary-item"><span>Discount</span><strong>£<span id="discount"></span></strong></div>
+        <div class="summary-item total-card"><span>Total</span><strong>£<span id="total"></span></strong></div>
+      </div>
 
       <hr/>
 
       <h3>JavaScript Solution</h3>
-      <pre>
-        <code>
+      <pre><code>
           function calculateBasket(items) {
             let subtotal = 0;
             let discount = 0;
@@ -92,12 +95,11 @@
           document.querySelector("#discount").textContent = result.discount.toFixed(2);
 
           document.querySelector("#total").textContent = result.total.toFixed(2);
-        </code>
-      </pre>
+        </code></pre>
     </main>
 
     <footer>
-
+      <p>Coding Challenge - Day 2</p>
     </footer>
 
     <script>

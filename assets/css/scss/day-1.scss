@@ -1,0 +1,26 @@
+.order-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.summary-item {
+  ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+  }
+
+  &-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .order-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-item-wide {
+    grid-column: auto;
+  }
+}
