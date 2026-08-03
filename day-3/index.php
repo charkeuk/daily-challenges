@@ -82,7 +82,7 @@ PHP;
   <link rel="stylesheet" href="../assets/css/combined.min.css">
 
 </head>
-<body>
+<body class="challenge-page">
 
   <header>
 
