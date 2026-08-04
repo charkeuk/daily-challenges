@@ -24,3 +24,6 @@ data/
 backups/
 *.sql
 *.dump
+
+# Keep reproducible challenge schemas and seed data in version control
+!**/database/**/*.sql
