@@ -20,3 +20,7 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![TablePlus](https://img.shields.io/badge/TablePlus-ffaf24?style=for-the-badge&logo=tableplus&logoColor=white)
+![DataGrip](https://img.shields.io/badge/DataGrip-000000?style=for-the-badge&logo=datagrip&logoColor=white)
+![Nova](https://img.shields.io/badge/Nova-7C4DFF?style=for-the-badge&logo=panic&logoColor=white)
+![Tower](https://img.shields.io/badge/Tower-00CAF4?style=for-the-badge&logo=tower&logoColor=white)
