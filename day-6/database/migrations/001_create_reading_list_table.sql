@@ -1,0 +1,6 @@
+CREATE TABLE reading_list (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    pages INTEGER NOT NULL,
+    finished BOOLEAN NOT NULL
+);
