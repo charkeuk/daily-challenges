@@ -1,0 +1,8 @@
+CREATE TABLE reading_list (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    genre VARCHAR(50) NOT NULL,
+    pages INTEGER NOT NULL,
+    rating NUMERIC(2, 1) NOT NULL,
+    finished BOOLEAN NOT NULL
+);
