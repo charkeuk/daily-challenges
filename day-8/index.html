@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Daily Challenges: Day 8 - JavaScript + JSON</title>
+  <link rel="stylesheet" href="../assets/css/combined.min.css">
+
+</head>
+<body class="challenge-page">
+
+  <header>
+
+    <h1>Daily Challenges: Day 8 - JavaScript + JSON</h1>
+
+    <p><strong>Estimated time</strong>: 30 minutes</p>
+    <p><strong>Level</strong>: Beginner to intermediate</p>
+    <p>
+      <strong>Objective</strong>:
+      Practise parsing JSON and using Array.reduce() to validate records and build a summary.
+    </p>
+
+  </header>
+
+  <main>
+
+    <hr />
+
+    <section>
+
+      <h2>Valid Order Summary</h2>
+
+      <div class="loan-summary">
+
+        <div class="summary-item">
+          <span>Valid Orders</span>
+          <strong id="valid-orders">0</strong>
+        </div>
+
+        <div class="summary-item">
+          <span>Skipped Orders</span>
+          <strong id="skipped-orders">0</strong>
+        </div>
+
+        <div class="summary-item">
+          <span>Total Items</span>
+          <strong id="total-items">0</strong>
+        </div>
+
+        <div class="summary-item">
+          <span>Total Revenue</span>
+          <strong id="total-revenue">£0.00</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+    <hr />
+
+    <section>
+
+      <h3>JavaScript Solution</h3>
+
+      <pre>
+    <code>const orderJson = `[
+      {"customer":"Maya","quantity":2,"price":12.50},
+      {"customer":"Leo","quantity":1,"price":20},
+      {"customer":"Maya","quantity":3,"price":5},
+      {"customer":"","quantity":2,"price":8},
+      {"customer":"Nora","quantity":0,"price":15}
+    ]`;
+      
+    function summariseOrders(ordersJson) {
+      const data = JSON.parse(ordersJson);
+    
+      const summary = data.reduce((totals, order) =&gt; {
+        const isValid =
+          order.customer !== "" &amp;&amp;
+          order.quantity &gt; 0 &amp;&amp;
+          order.price &gt; 0;
+    
+        if (isValid) {
+          totals.validOrders++;
+          totals.totalItems = totals.totalItems + order.quantity;
+          totals.totalRevenue = totals.totalRevenue + (order.quantity * order.price);
+        } else {
+          totals.skippedOrders++;
+        }
+    
+        return totals;
+      }, {
+        validOrders: 0,
+        skippedOrders: 0,
+        totalItems: 0,
+        totalRevenue: 0
+      });
+    
+      return summary;
+    }
+      
+    const result = summariseOrders(orderJson);
+    console.log(result);</code></pre>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <p>Coding Challenge - Day 8</p>
+
+  </footer>
+
+  <script>
+    const orderJson = `[
+      {"customer":"Maya","quantity":2,"price":12.50},
+      {"customer":"Leo","quantity":1,"price":20},
+      {"customer":"Maya","quantity":3,"price":5},
+      {"customer":"","quantity":2,"price":8},
+      {"customer":"Nora","quantity":0,"price":15}
+    ]`;
+
+    function summariseOrders(ordersJson) {
+      const data = JSON.parse(ordersJson);
+
+      const summary = data.reduce((totals, order) => {
+        const isValid =
+          order.customer !== "" &&
+          order.quantity > 0 &&
+          order.price > 0;
+
+        if (isValid) {
+          totals.validOrders++;
+          totals.totalItems = totals.totalItems + order.quantity;
+          totals.totalRevenue = totals.totalRevenue + (order.quantity * order.price);
+        } else {
+          totals.skippedOrders++;
+        }
+
+        return totals;
+      }, {
+        validOrders: 0,
+        skippedOrders: 0,
+        totalItems: 0,
+        totalRevenue: 0
+      });
+
+      return summary;
+    }
+
+    const result = summariseOrders(orderJson);
+
+    document.getElementById("valid-orders").textContent = result.validOrders;
+    document.getElementById("skipped-orders").textContent = result.skippedOrders;
+    document.getElementById("total-items").textContent = result.totalItems;
+    document.getElementById("total-revenue").textContent = `£${result.totalRevenue.toFixed(2)}`;
+  </script>
+
+</body>
+</html>
